@@ -33,7 +33,7 @@ Add the package to your Xcode project using Swift Package Manager:
 
 1. **Add the Package to Your UIKit Project**: Follow the installation steps mentioned above.
 
-2. **Use the `MyLibraryT` Class**:
+2. **Use the `CygnvsCreateProfile` Class**:
 
    ```swift
    import UIKit
