@@ -26,11 +26,40 @@ public struct UserProfileView: View {
         NavigationView {
             ScrollView{
                 VStack {
-                    UserNameField()
+                    TextField("Name", text: $viewModel.userProfile.username)
+                        .focused($isFocused)
+                        .padding()
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
                     
-                    EmailField()
+                    TextField("Email", text: $viewModel.userProfile.email)
+                        .padding()
+                        .focused($isFocused)
+                        .background(Color.gray.opacity(0.2))
+                        .cornerRadius(8)
+                        .keyboardType(.emailAddress)
                     
-                    PhoneNumberField()
+                    
+                    TextField("Phone Number", text: Binding(
+                        get: {
+                            viewModel.userProfile.phoneNumber
+                        },
+                        set: { newValue in
+                            //10 Digit Ph Number - Max
+                            let filtered = newValue.filter { "0123456789".contains($0) }
+                            if filtered.count <= 10 {
+                                viewModel.userProfile.phoneNumber = filtered
+                            }
+                            if filtered.count > 10 {
+                                //Have to stop input
+                                hideKeyboard()
+                            }
+                        }
+                    ))
+                    .padding()
+                    .background(Color.gray.opacity(0.2))
+                    .cornerRadius(8)
+                    .keyboardType(.numberPad)
                     
                     ZStack{
                         Button(action: {
