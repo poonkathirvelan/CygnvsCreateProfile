@@ -39,7 +39,7 @@ public class CygnvsCreateProfile: NSObject  {
 
 //MARK: - UserProfileDelegate for Back and Submit
 
-extension MyLibraryT: UserProfileDelegate {
+extension CygnvsCreateProfile: UserProfileDelegate {
     //BACK
     public func backtoParentClicked() {
         self.delegate?.disMissUserProfileView(userProfile: nil)
